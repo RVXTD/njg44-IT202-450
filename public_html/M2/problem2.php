@@ -33,12 +33,16 @@ function sumValues($arr, $arrayNumber)
     $total = 0;
     // Start Solution Edits
     // Solve Challenge 1 here
+    foreach ($arr as $value) {
+        $total += $value;
+    }
 
 
 
 
     // Solve Challenge 2 here
-    $modifiedTotal = "?";
+     $modifiedTotal = number_format($total, 2, '.', '');
+     //njg44 6/16/25
 
     // End Solution Edits
     echo "<p>Total Raw Value: {$total}</p>";
