@@ -2,7 +2,7 @@
 
 require_once "base.php";
 
-$ucid = "mt85"; // <-- set your ucid
+$ucid = "njg44"; // <-- set your ucid
 
 // Don't edit the arrays below, they are used to test your code
 $array1 = ["hello world!", "php programming", "special@#$%^&characters", "numbers 123 456", "mIxEd CaSe InPut!"];
@@ -26,6 +26,11 @@ function transformText($arr, $arrayNumber) {
     // If the phrase is shorter than 3 characters, return "Not enough characters"
 
     // Step 1: sketch out plan using comments (include ucid and date)
+    //Remove non-alphanumeric characters (except spaces) — using regex.
+    //Convert to title case — lowercase the string then ucwords() it.
+    //Trim spaces and collapse multiple spaces to a single space — trim() and preg_replace().
+    //njg44 6/16/25
+    
     // Step 2: Add/commit your outline of comments (required for full credit)
     // Step 3: Add code to solve the problem (add/commit as needed)
     $placeholderForModifiedPhrase = "";
