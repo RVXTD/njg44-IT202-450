@@ -32,7 +32,12 @@ function printOdds($arr, $arrayNumber)
 
     echo "Output Array: ";
     // Start Solution Edits
-
+    $odds = [];
+    foreach ($arr as $num) {
+        if ($num % 2 != 0) {
+            $odds[] = $num;
+        }
+    }
 
     // End Solution Edits
     echo "<br>______________________________________<br>";
