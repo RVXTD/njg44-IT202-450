@@ -19,6 +19,18 @@ function bePositive($arr, $arrayNumber)
     // Challenge 1: Make each value positive
     // Challenge 2: Convert the values back to their original data type and assign it to the proper slot of the `output` array
     // Step 1: sketch out plan using comments (include ucid and date)
+
+    //Loop through the array.
+    //Detect the type of each item.
+    //Convert it to a float or int for numeric operation.
+    //Take the absolute value.
+    //Convert the number back to its original type:
+    //if original was int → cast to int
+    //if float → float
+    //if string → string
+    //Store the converted value in the same index in the $output array.
+    //njg44 6/16/25
+    
     // Step 2: Add/commit your outline of comments (required for full credit)
     // Step 3: Add code to solve the problem (add/commit as needed)
 
