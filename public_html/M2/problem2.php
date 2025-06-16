@@ -21,6 +21,12 @@ function sumValues($arr, $arrayNumber)
     // Challenge 2: Have the sum be represented as a number with exactly 2 decimal places, assign to `modifiedTotal`
     // Example: 0.1 would be shown as 0.10, 1 would be shown as 1.00, etc
     // Step 1: sketch out plan using comments (include ucid and date)
+
+    //Loop through each element in the array $arr and add them up to get $total.
+    //After calculating the raw sum, format $total to two decimal places using number_format() or sprintf() to get $modifiedTotal.
+    //Display both the raw and formatted totals using echo.
+    //njg44 6/16/25
+
     // Step 2: Add/commit your outline of comments (required for full credit)
     // Step 3: Add code to solve the problem (add/commit as needed)
 
