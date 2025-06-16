@@ -25,7 +25,7 @@ function printOdds($arr, $arrayNumber)
     // 4. If it's odd, add it to the new array.
     // 5. After the loop, join the array into a comma-separated string using implode().
     // 6. Echo the final output string.
-    //njg44 5/16/25
+    //njg44 6/16/25
 
     // Step 2: Add/commit your outline of comments (required for full credit)
     // Step 3: Add code to solve the problem (add/commit as needed)
@@ -38,7 +38,7 @@ function printOdds($arr, $arrayNumber)
             $odds[] = $num;
         }
     }
-
+    //njg44 6/16/25
     // End Solution Edits
     echo "<br>______________________________________<br>";
 }
