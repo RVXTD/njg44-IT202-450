@@ -30,14 +30,33 @@ function bePositive($arr, $arrayNumber)
     //if string → string
     //Store the converted value in the same index in the $output array.
     //njg44 6/16/25
-    
+
     // Step 2: Add/commit your outline of comments (required for full credit)
     // Step 3: Add code to solve the problem (add/commit as needed)
 
     $output = array_fill(0, count($arr), null); // Initialize output array
     // Start Solution Edits
+foreach ($arr as $i => $val) {
+        $originalType = gettype($val);
+        $absVal = abs($val); // abs() works with int, float, and numeric strings
 
-
+        switch ($originalType) {
+            case "integer":
+                $output[$i] = (int)$absVal;
+                break;
+            case "double":
+                $output[$i] = (float)$absVal;
+                break;
+            case "string":
+                $output[$i] = (string)$absVal;
+                break;
+            default:
+                // fallback for unexpected types
+                $output[$i] = $absVal;
+                break;
+        }
+    }
+    //njg44 6/16/25
     // End Solution Edits
     echo "<span>Output: </span>";
     printOutputWithType($output);
