@@ -17,6 +17,16 @@ function printOdds($arr, $arrayNumber)
 
     // Challenge: Print odd values only in a single line separated by commas
     // Step 1: sketch out plan using comments (include ucid and date)
+    // Plan:
+
+    // 1. Initialize an empty array to hold odd numbers.
+    // 2. Loop through the input array.
+    // 3. For each number, check if it is odd (use modulus % 2).
+    // 4. If it's odd, add it to the new array.
+    // 5. After the loop, join the array into a comma-separated string using implode().
+    // 6. Echo the final output string.
+    //njg44 5/16/25
+
     // Step 2: Add/commit your outline of comments (required for full credit)
     // Step 3: Add code to solve the problem (add/commit as needed)
 
