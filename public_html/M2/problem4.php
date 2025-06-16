@@ -30,7 +30,7 @@ function transformText($arr, $arrayNumber) {
     //Convert to title case — lowercase the string then ucwords() it.
     //Trim spaces and collapse multiple spaces to a single space — trim() and preg_replace().
     //njg44 6/16/25
-    
+
     // Step 2: Add/commit your outline of comments (required for full credit)
     // Step 3: Add code to solve the problem (add/commit as needed)
     $placeholderForModifiedPhrase = "";
@@ -38,9 +38,20 @@ function transformText($arr, $arrayNumber) {
     foreach ($arr as $index => $text) {
         // Start Solution Edits
 
-        
+        // Step 1: Remove non-alphanumeric characters except spaces
+        $cleaned = preg_replace("/[^a-zA-Z0-9 ]/", "", $text);
+
+        // Step 2: Convert to title case
+        $titleCase = ucwords(strtolower($cleaned));
+
+        // Step 3: Trim and collapse extra spaces
+        $singleSpaced = preg_replace("/\s+/", " ", trim($titleCase));
+
+        // Final result
+        $placeholderForModifiedPhrase = $singleSpaced;
 
         // End Solution Edits
+        //njg44 6/16/25
         echo "<div>";
         printStringTransformations($index, $placeholderForModifiedPhrase, $placeholderForMiddleCharacters);
         echo "</div>";
