@@ -76,9 +76,85 @@ Requirements:
 <script src="util.js"></script>
 
 <script>
-    /* Solve the button logic here by finding and attaching an appropriate event listener and logic*/
+  const container = document.querySelector('.carousel-container');
+  const panels = document.querySelectorAll('.panel');
+  const buttons = document.querySelectorAll('body.challenge3 > nav button');
+  let currentIndex = 0;
+  const maxIndex = panels.length - 1;
+
+  function updateCarousel() {
+    container.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  buttons[0].addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + panels.length) % panels.length;
+    updateCarousel();
+  });
+
+  buttons[1].addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % panels.length;
+    updateCarousel();
+  });
+
+  // Initial update
+  updateCarousel();
+  /*njg44 6/23/25*/
 </script>
 
+
 <style>
-    /* You're free to make whatever edits you need here, just don't override anything in the styles.css */
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body.challenge3 {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  header {
+    flex: 0 0 auto;
+    height: 60px;
+  }
+
+  body.challenge3 > nav {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin: 10px 0;
+  }
+
+  .carousel {
+    flex: 1;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .carousel-container {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    height: 100%;
+  }
+
+  .panel {
+    flex: 0 0 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    padding: 1em;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  .panel > div {
+    text-align: center;
+  }
+  /*njg44 6/23/25*/
 </style>
+
