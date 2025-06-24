@@ -56,6 +56,43 @@ Requirements:
 <script src="util.js"></script>
 
 <style>
-    /* You're free to make whatever edits you need here, just don't override anything in the styles.css */
-    /* See the requirements at the top. If easier, you may copy/paste them here*/
+  html, body {
+    height: 100%;
+    overflow: hidden; /* Prevent the browser window scrollbar */
+  }
+
+  body.challenge1 {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  header, footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 60px;
+    z-index: 1;
+  }
+
+  header {
+    top: 0;
+  }
+
+  footer {
+    bottom: 0;
+  }
+
+  main {
+    flex: 1;
+    margin-top: 60px;  /* match header height */
+    margin-bottom: 60px; /* match footer height */
+    overflow-y: auto;
+  }
+
+  main .content {
+    padding: 1em;
+  }
+  /*njg44 6/23/25*/
 </style>
+
