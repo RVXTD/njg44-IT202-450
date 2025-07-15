@@ -1,15 +1,16 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
+reset_session(); // Ensures fresh session at register
 ?>
 <h3>Register</h3>
 <form onsubmit="return validate(this)" method="POST">
     <div>
         <label for="email">Email</label>
-        <input id="email" type="email" name="email" required />
+        <input id="email" type="email" name="email" required value="<?= se($_POST, "email", "") ?>" />
     </div>
     <div>
         <label for="username">Username</label>
-        <input type="text" name="username" required maxlength="30" />
+        <input type="text" name="username" required maxlength="30" value="<?= se($_POST, "username", "") ?>" />
     </div>
     <div>
         <label for="pw">Password</label>
@@ -21,46 +22,56 @@ require(__DIR__ . "/../../partials/nav.php");
     </div>
     <input type="submit" value="Register" />
 </form>
+
 <script>
-    function validate(form) {
-        //TODO 1: implement JavaScript validation (you'll do this on your own towards the end of Milestone1)
-        //ensure it returns false for an error and true for success
+function validate(form) {
+    const email = form.email.value.trim();
+    const username = form.username.value.trim();
+    const password = form.password.value;
+    const confirm = form.confirm.value;
 
-        return true;
+    if (!email || !username || !password || !confirm) {
+        alert("All fields are required.");
+        return false;
     }
-</script>
-<?php
-//TODO 2: add PHP Code
-if (isset($_POST["email"], $_POST["password"], $_POST["confirm"], $_POST["username"])) {
 
+    if (!email.match(/^[^@]+@[^@]+\.[^@]+$/)) {
+        alert("Please enter a valid email address.");
+        return false;
+    }
+
+    if (password.length < 8) {
+        alert("Password must be at least 8 characters.");
+        return false;
+    }
+
+    if (password !== confirm) {
+        alert("Passwords do not match.");
+        return false;
+    }
+
+    return true;
+}
+</script>
+
+<?php
+if (isset($_POST["email"], $_POST["password"], $_POST["confirm"], $_POST["username"])) {
     $email = se($_POST, "email", "", false);
     $password = se($_POST, "password", "", false);
     $confirm = se($_POST, "confirm", "", false);
     $username = se($_POST, "username", "", false);
-    // TODO 3: validate/use
+
     $hasError = false;
 
-    if (empty($email)) {
-        flash("Email must not be empty.", "danger");
-        $hasError = true;
-    }
-    // Sanitize and validate email
+    // Sanitize + Validate
     $email = sanitize_email($email);
     if (!is_valid_email($email)) {
         flash("Invalid email address.", "danger");
         $hasError = true;
     }
+
     if (!is_valid_username($username)) {
         flash("Username must be lowercase, alphanumerical, and can only contain _ or -", "danger");
-        $hasError = true;
-    }
-    if (empty($password)) {
-        flash("Password must not be empty.", "danger");
-        $hasError = true;
-    }
-
-    if (empty($confirm)) {
-        flash("Confirm password must not be empty.", "danger");
         $hasError = true;
     }
 
@@ -75,27 +86,25 @@ if (isset($_POST["email"], $_POST["password"], $_POST["confirm"], $_POST["userna
     }
 
     if (!$hasError) {
-        // TODO 4: Hash password and store record in DB
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-        $db = getDB(); // available due to the `require()` of `functions.php`
-        // Code for inserting user data into the database
+        $db = getDB();
+
         $stmt = $db->prepare("INSERT INTO Users (email, password, username) VALUES (:email, :password, :username)");
         try {
-            $stmt->execute([':email' => $email, ':password' => $hashed_password, ':username' => $username]);
-   
+            $stmt->execute([
+                ":email" => $email,
+                ":password" => $hashed_password,
+                ":username" => $username
+            ]);
             flash("Successfully registered! You can now log in.", "success");
-        } catch(PDOException $e) {
-            // Handle duplicate email/username
-            users_check_duplicate($e);
-        }
-        catch (Exception $e) {
+            // Redirect to login or clear form (optional)
+        } catch (PDOException $e) {
+            users_check_duplicate($e); // Handles unique constraints
+        } catch (Exception $e) {
             flash("There was an error registering. Please try again.", "danger");
-            error_log("Registration Error: " . var_export($e, true)); // log the technical error for debugging
+            error_log("Registration Error: " . var_export($e, true));
         }
     }
 }
-?>
-<?php
 require(__DIR__ . "/../../partials/flash.php");
-reset_session();
 ?>
