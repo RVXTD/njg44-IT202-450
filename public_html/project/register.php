@@ -98,7 +98,7 @@ if (isset($_POST["email"], $_POST["password"], $_POST["confirm"], $_POST["userna
             $stmt->execute([':email' => $email, ':password' => $hashed_password, ':username' => $username]);
    
             flash("Successfully registered! You can now log in.", "success");
-        } catch(PDOException $e) {
+        } catch(PDOException $e ) {
             // Handle duplicate email/username
             users_check_duplicate($e);
         }
