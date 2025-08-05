@@ -7,7 +7,7 @@ if (isset($_GET["keyword"])) {
     $endpoint = "https://alpha-vantage.p.rapidapi.com/query";
     $isRapidAPI = true;
     $rapidAPIHost = "alpha-vantage.p.rapidapi.com";
-    $result = get($endpoint, "STOCK_API_KEY", $data, $isRapidAPI, $rapidAPIHost);
+    $result = get($endpoint, "R6_API_KEY", $data, $isRapidAPI, $rapidAPIHost);
     //example of cached data to save the quotas, don't forget to comment out the get() if using the cached data for testing
     /* $result = ["status" => 200, "response" => {
         "bestMatches": [
