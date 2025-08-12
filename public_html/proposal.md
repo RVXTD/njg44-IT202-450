@@ -17,4 +17,4 @@
 - Milestone 3
   - https://github.com/RVXTD/njg44-IT202-450/blob/Milestone3/public_html/project/PDFs/njg44_IT202-450-M2025_it202-milestone-3_08-11-2025_21-42-01.pdf
 - Demo Link
-  - (add youtube link to unlisted or public demo) Note you'll need to verify your youtube account to upload videos > 15mins
+  - https://youtu.be/qJmRqn05Y-g
